@@ -1,0 +1,224 @@
+const SCHEMA_EBANK = global.gConfig.db_oracle_ebanking.schema
+
+const getCustomerDateQuery = `SELECT birth_day, birth_month,birth_year FROM CRMUSER.accounts WHERE orgkey =:cifId`
+
+const checkUserHasAlreadyAppliedForCreditCardQuery = `SELECT R_CRE_TIME FROM ${SCHEMA_EBANK}.CUSTOM_CC_SUBMIT_TABLE WHERE "cif_id" =:cifId ORDER BY R_CRE_TIME DESC`
+
+const getSingleMopFDQuery = (accountNumbers) =>
+  `SELECT foracid
+    FROM TBAADM.gam
+    WHERE foracid in (${accountNumbers.map((item) => `'${item}'`)})
+          AND  mode_of_oper_code='1' AND CIF_ID = :CifId`
+
+const checkFatcaDeclarationQuery = (
+  accountNumbers
+) => `select entity_id, free_code_18
+          from CFCM
+          where entity_id IN (${accountNumbers.map((item) => `'${item}'`)})`
+
+const getValidFDFromAccoutNumbersQuery = (item) =>
+  `select CUSTOM.FUNC_FFD_SB_GEN_INQ ('${item}') from dual`
+
+const getValidFDList = (item) => `select
+  Case When (
+    Select
+      Count(1)
+    From
+      Tbaadm.Alt
+    Where
+      Acid = Gam.Acid
+      And Entity_Cre_Flg = 'Y'
+      And Del_Flg = 'N'
+  )> 1 Then (
+    Select
+      B2k_Type
+    From
+      Tbaadm.Alt
+    Where
+      Acid = Gam.Acid
+      And B2k_Type != 'SHFLN'
+      and ENTITY_CRE_FLG = 'Y'
+      and DEL_FLG = 'N'
+      And Rownum = 1
+  ) Else NVL(
+    (
+      Select
+        B2k_Type
+      From
+        Tbaadm.Alt
+      Where
+        Acid = Gam.Acid
+        And Entity_Cre_Flg = 'Y'
+        And Del_Flg = 'N'
+        And Rownum = 1
+    ),
+    'NA'
+  ) end || '|' || --"Lien Code"
+  gam.lien_amt || '|' || --"Lien Amt."
+  decode(
+    (
+      select
+        deposit_type
+      from
+        tbaadm.tam
+      where
+        acid = gam.acid
+    ),
+    'F',
+    'Y',
+    'N'
+  )|| '|' || --"Is FFD"
+  nvl(
+    (
+      select
+        CUSTOMERMINOR
+      from
+        crmuser.accounts
+      where
+        orgkey = gam.cif_id
+    ),
+    'NA'
+  )|| '|' || --"Is Minor"
+  nvl(
+    (
+      select
+        (
+          select
+            foracid
+          from
+            tbaadm.gam
+          where
+            acid = tam.LINK_OPER_ACCOUNT
+        )
+      from
+        tbaadm.tam
+      where
+        acid = gam.acid
+    ),
+    'NA'
+  )|| '|' || --"Lnkd Opr Acc"
+  nvl(pool_id, 'NA')|| '|' || --"Pool id"
+  schm_code || '|' || --"Scheme Code"
+  (
+    select
+      NRML_PCNT_CR
+    from
+      tbaadm.itc
+    where
+      entity_id = gam.acid
+      and INT_TBL_CODE_SRL_NUM in (
+        select
+          max(INT_TBL_CODE_SRL_NUM)
+        from
+          tbaadm.itc
+        where
+          entity_id = gam.acid
+          and ENTITY_CRE_FLG = 'Y'
+          and DEL_FLG = 'N'
+      )
+  )|| '|' || --"Int."
+  nvl(
+    (
+      select
+        to_char(MATURITY_DATE, 'DD-MM-YYYY')
+      from
+        tbaadm.tam
+      where
+        acid = gam.acid
+    ),
+    'NA'
+  )|| '|' || --"Maturity Date
+  nvl(
+    (
+      select
+        to_char(DEPOSIT_AMOUNT)
+      from
+        tbaadm.tam
+      where
+        acid = gam.acid
+    ),
+    'NA'
+  )|| '|' || --"Deposit Amt"
+  nvl(
+    (
+      select
+        free_code_8
+      from
+        tbaadm.gac
+      where
+        acid = gam.acid
+    ),
+    'NA'
+  )|| '|' || --"Risk Code"
+  nvl(
+    (
+      select
+        USERFIELD6
+      from
+        crmuser.demographic
+      where
+        orgkey = gam.cif_id
+    ),
+    'NA'
+  )|| '|' || --"Busniess Seg Code"
+  nvl(
+    (
+      select
+        CONSTITUTION_CODE
+      from
+        crmuser.accounts
+      where
+        orgkey = gam.cif_id
+    ),
+    'NA'
+  )|| '|' || --"Cust Const Code"
+  (
+    select
+      int_tbl_code
+    from
+      tbaadm.itc
+    where
+      entity_id = gam.acid
+      and INT_TBL_CODE_SRL_NUM in (
+        select
+          max(INT_TBL_CODE_SRL_NUM)
+        from
+          tbaadm.itc
+        where
+          entity_id = gam.acid
+      )
+  )|| '|' || --"Int. tbl code"
+  nvl(
+    (
+      Select
+        Renewal_option
+      From
+        Tbaadm.reno
+      Where
+        Acid = Gam.Acid
+        And bank_id = gam.bank_id
+    ),
+    'NA'
+  )|| '|' || --"Renewal Option"
+  nvl(
+    (
+      Select
+        Close_On_Maturity_Flg
+      From
+        Tbaadm.Tam
+      Where
+        Acid = Gam.Acid
+    ),
+    'NA'
+  )|| '|' || --"Auto Close Flag"
+  nvl(cif_id, 'NA') || '|' || --"Pool id"
+  nvl(foracid, 'NA') AS RESULTS
+from
+  tbaadm.gam
+where
+  gam.foracid IN (${item})
+  and gam.entity_cre_flg <> 'N'
+  and acct_cls_flg <> 'Y'
+  and del_flg <> 'Y'`
+
+
