@@ -1,0 +1,18 @@
+const SCHEMA_EBANK = global.gConfig.db_oracle_ebanking.schema
+
+const getCustomerSegmentFromFinacleQuery = `Select SEGMENTATION_CLASS, SUBSEGMENT FROM CRMUSER.ACCOUNTS WHERE ORGKEY=:cifId`
+
+const getOffersAccordingToSegmentQuery = `SELECT * FROM ${SCHEMA_EBANK}.CUSTOM_APP_CARD_OFFERS_TABLE 
+                 WHERE CUSTOMER_SEGMENT=:custSegment AND  DEL_FLG = 'N'`
+
+const getOffersDetailsQuery = (cardNameAndLimit) =>
+  `SELECT * FROM ${SCHEMA_EBANK}.CUSTOM_APP_CARD_OFFERS_TABLE 
+                   WHERE CUSTOMER_SEGMENT=:custSegment  AND DEL_FLG = 'N' AND CARD_NAME IN (${cardNameAndLimit.map(
+                     (i) => `'${i.cardName}'`
+                   )}) ORDER BY DISPLAY_ORDER ASC`
+
+const checkUserHasAlreadyAppliedForCreditCardQuery = `SELECT R_CRE_TIME FROM ${SCHEMA_EBANK}.CUSTOM_CC_SUBMIT_TABLE WHERE "cif_id" =:cifId ORDER BY R_CRE_TIME DESC`
+
+const checkUserHasCreditCardOfferQuery = `SELECT *
+    FROM Recommendation_New
+    WHERE customer_code=@customer_code`
