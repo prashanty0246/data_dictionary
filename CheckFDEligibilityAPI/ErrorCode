@@ -1,0 +1,102 @@
+{
+  "000": {
+    "errorCode": "000",
+    "errorMsg": "Success",
+    "errorType": "B"
+  },
+  "001": {
+    "errorCode": "001",
+    "errorMsg": "API Call Error",
+    "errorType": "T"
+  },
+  "002": {
+    "errorCode": "002",
+    "errorMsg": "Request Timed Out",
+    "errorType": "T"
+  },
+  "003": {
+    "errorCode": "003",
+    "errorMsg": "Improper Response",
+    "errorType": "T"
+  },
+  "004": {
+    "errorCode": "004",
+    "errorMsg": "Invalid ChannelID",
+    "errorType": "B"
+  },
+  "005": {
+    "errorCode": "005",
+    "errorMsg": "Invalid ServiceRequestID",
+    "errorType": "B"
+  },
+  "006": {
+    "errorCode": "006",
+    "errorMsg": "Duplicate RequestUUID",
+    "errorType": "B"
+  },
+  "007": {
+    "errorCode": "007",
+    "errorMsg": "Database Error",
+    "errorType": "T"
+  },
+  "008": {
+    "errorCode": "008",
+    "errorMsg": "We were unable to process your request. We regret the inconvenience & request you to please try again later. Thank you.",
+    "errorType": "B"
+  },
+  "009": {
+    "errorCode": "009",
+    "errorMsg": "No data found for given CIF",
+    "errorType": "B"
+  },
+  "010": {
+    "errorCode": "010",
+    "errorMsg": "Invalid input provided in request..",
+    "errorType": "B"
+  },
+  "999": {
+    "errorCode": "999",
+    "errorMsg": "Something went wrong.Kindly contact System Admin.",
+    "errorType": "T"
+  },
+  "101": {
+    "errorCode": "101",
+    "errorMsg": "Card re-issue request has been raised already.",
+    "errorType": "T"
+  },
+  "102": {
+    "errorCode": "102",
+    "errorMsg": "Seem likes, You Dont Have any Credit Card offer",
+    "errorType": "T"
+  },
+  "103": {
+    "errorCode": "103",
+    "errorMsg": "Database service is not enable",
+    "errorType": "T"
+  },
+  "104": {
+    "errorCode": "104",
+    "errorMsg": "Thank You for expressing interest for RBL Credit card. Your application has been submitted and is in process. You will receive status update of your credit card application on your registered mobile number.",
+    "errorType": "T"
+  },
+  "105": {
+    "errorCode": "105",
+    "errorMsg": "Caught en error while inserting, Kindly check the details",
+    "errorType": "T"
+  },
+  "106": {
+    "errorCode": "106",
+    "errorMsg": "Your age is not valid",
+    "errorType": "T"
+  },
+  "107": {
+    "errorCode": "107",
+    "errorMsg": "Regret to inform that you are not meeting the Bank's criteria for Credit Card against FD. Please read Secured card T&Cs to know more.",
+    "errorType": "T"
+  },
+  "408": {
+    "errorCode": "408",
+    "errorMsg": "Request Timed Out",
+    "errorType": "T"
+  }
+}
