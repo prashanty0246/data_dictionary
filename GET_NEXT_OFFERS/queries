@@ -1,1 +1,127 @@
-test
+const getMobankNextOffers = `SELECT  offer.*, 
+Recommendation_New.Offer_ID1,
+Recommendation_New.Offer_ID2,
+Recommendation_New.Offer_ID3,
+Recommendation_New.Offer_ID4,
+Recommendation_New.Offer_ID5,
+Recommendation_New.Offer_ID6,
+Recommendation_New.Offer_ID7, 
+Recommendation_New.Offer_ID1_Is_New,
+Recommendation_New.Offer_ID2_Is_New,
+Recommendation_New.Offer_ID3_Is_New,
+Recommendation_New.Offer_ID4_Is_New,
+Recommendation_New.Offer_ID5_Is_New,
+Recommendation_New.Offer_ID6_Is_New,
+Recommendation_New.Offer_ID7_Is_New,
+Recommendation_New.Offer_ID1_Is_Read,
+Recommendation_New.Offer_ID2_Is_Read,
+Recommendation_New.Offer_ID3_Is_Read,
+Recommendation_New.Offer_ID4_Is_Read,
+Recommendation_New.Offer_ID5_Is_Read,
+Recommendation_New.Offer_ID6_Is_Read,
+Recommendation_New.Offer_ID7_Is_Read,
+Recommendation_New.Offer_ID1_Is_Live,
+Recommendation_New.Offer_ID2_Is_Live,
+Recommendation_New.Offer_ID3_Is_Live,
+Recommendation_New.Offer_ID4_Is_Live,
+Recommendation_New.Offer_ID5_Is_Live,
+Recommendation_New.Offer_ID6_Is_Live,
+Recommendation_New.Offer_ID7_Is_Live,
+Recommendation_New.Offer_ID1_Valid_From,
+Recommendation_New.Offer_ID2_Valid_From,
+Recommendation_New.Offer_ID3_Valid_From,
+Recommendation_New.Offer_ID4_Valid_From,
+Recommendation_New.Offer_ID5_Valid_From,
+Recommendation_New.Offer_ID6_Valid_From,
+Recommendation_New.Offer_ID7_Valid_From,
+Recommendation_New.Offer_ID1_Valid_Until,
+Recommendation_New.Offer_ID2_Valid_Until,
+Recommendation_New.Offer_ID3_Valid_Until,
+Recommendation_New.Offer_ID4_Valid_Until,
+Recommendation_New.Offer_ID5_Valid_Until,
+Recommendation_New.Offer_ID6_Valid_Until,
+Recommendation_New.Offer_ID7_Valid_Until
+FROM       offer
+INNER JOIN recommendation_new
+ON          (    
+                 offer.offer_id = recommendation_new.offer_id1 AND Offer_ID1_channel = @Offer_ID1_channel
+      AND        ( (
+                                       recommendation_new.offer_id1_expiry_date >= GETDATE()
+                            OR         recommendation_new.offer_id1_expiry_date IS NULL) )
+      AND        ( (
+                                       offer_id1_valid_from <= GETDATE()
+                            AND        offer_id1_valid_until >= GETDATE())
+                 OR         (
+                                       offer_id1_valid_from IS NULL
+                            OR         offer_id1_valid_until  IS NULL) ))
+OR         (
+                 offer.offer_id = recommendation_new.offer_id2 AND Offer_ID2_channel = @Offer_ID2_channel
+      AND        ( (
+                                       recommendation_new.offer_id2_expiry_date >= GETDATE()
+                            OR         recommendation_new.offer_id2_expiry_date IS NULL) )
+      AND        ( (
+                                       offer_id2_valid_from <= GETDATE()
+                            AND        offer_id2_valid_until >= GETDATE())
+                 OR         (
+                                       offer_id2_valid_from IS NULL
+                            OR         offer_id2_valid_until  IS NULL) ))
+OR        (
+                 offer.offer_id = recommendation_new.offer_id3 AND Offer_ID3_channel = @Offer_ID3_channel
+      AND        ( (
+                                       recommendation_new.offer_id3_expiry_date >= GETDATE()
+                            OR         recommendation_new.offer_id3_expiry_date IS NULL) )
+      AND        ( (
+                                       offer_id3_valid_from <= GETDATE()
+                            AND        offer_id3_valid_until >= GETDATE())
+                 OR         (
+                                       offer_id3_valid_from IS NULL
+                            OR         offer_id3_valid_until  IS NULL) ))
+OR          (
+                 offer.offer_id = recommendation_new.offer_id4 AND Offer_ID4_channel = @Offer_ID4_channel
+      AND        ( (
+                                       recommendation_new.offer_id4_expiry_date >= GETDATE()
+                            OR         recommendation_new.offer_id4_expiry_date IS NULL) )
+      AND        ( (
+                                       offer_id4_valid_from <= GETDATE()
+                            AND        offer_id4_valid_until >= GETDATE())
+                 OR         (
+                                       offer_id4_valid_from IS NULL
+                            OR         offer_id4_valid_until  IS NULL) ))
+OR         (
+                 offer.offer_id = recommendation_new.offer_id5 AND Offer_ID5_channel = @Offer_ID5_channel
+      AND        ( (
+                                       recommendation_new.offer_id5_expiry_date >= GETDATE()
+                            OR         recommendation_new.offer_id5_expiry_date IS NULL) )
+      AND        ( (
+                                       offer_id5_valid_from <= GETDATE()
+                            AND        offer_id5_valid_until >= GETDATE())
+                 OR         (
+                                       offer_id5_valid_from IS NULL
+                            OR         offer_id5_valid_until  IS NULL) ))
+OR         (
+                              offer.offer_id = recommendation_new.offer_id6 AND Offer_ID6_channel = @Offer_ID6_channel
+                   AND        ( (
+                                                    recommendation_new.offer_id6_expiry_date >= GETDATE()
+                                         OR         recommendation_new.offer_id6_expiry_date IS NULL) )
+                   AND        ( (
+                                                    offer_id6_valid_from <= GETDATE()
+                                         AND        offer_id6_valid_until >= GETDATE())
+                              OR         (
+                                                    offer_id6_valid_from IS NULL
+                                         OR         offer_id6_valid_until  IS NULL) )) 
+OR         (
+                              offer.offer_id = recommendation_new.offer_id7 AND Offer_ID7_channel = @Offer_ID7_channel
+                               AND        ( (
+                                                                recommendation_new.offer_id7_expiry_date >= GETDATE()
+                                                     OR         recommendation_new.offer_id7_expiry_date IS NULL) )
+                               AND        ( (
+                                                                offer_id7_valid_from <= GETDATE()
+                                                     AND        offer_id7_valid_until >= GETDATE())
+                                          OR         (
+                                                                offer_id7_valid_from IS NULL
+                                                     OR         offer_id7_valid_until  IS NULL) ))         
+WHERE      customer_code = @customer_code `
+
+module.exports = {
+  getMobankNextOffers,
+}
