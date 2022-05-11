@@ -1,0 +1,15 @@
+const TABLE_api_digiaqui_header =
+  global.gConfig.db_oracle_api_esbuat.schema + '.api_digiaqui_header'
+const TABLE_api_oracle_eBanking =
+  global.gConfig.db_oracle_eBanking.schema + '.insurance_audit_table'
+
+const getHospicash = `SELECT ADH_HOSPICASH,ADH_UPDATED_ON FROM ${TABLE_api_digiaqui_header} WHERE ADH_APP_TYPE = 'WEBAPP' AND ADH_CIF_ID = :cifId AND ADH_UPDATED_ON > SYSDATE -365`
+
+const getInsuranceAuditTable = `SELECT PRODUCT_ID,PRICE,POLICY_START_DATE 
+FROM ${TABLE_api_oracle_eBanking} 
+WHERE STATUS = 'SUC' AND
+PRODUCT_ID IN ('4655','4005') AND
+TO_DATE(POLICY_START_DATE,'DD-MM-YYYY') > SYSDATE -365 AND 
+CUST_ID = :cifId`
+
+const getBanners = `SELECT * FROM MBBanners_Section WHERE ScreenID=@ScreenID AND entryFlag='Y' AND (IsMobank = @IsMobank OR IsDiplomat = @IsDiplomat) ORDER BY CAST(SequenceID AS INT) ASC`
