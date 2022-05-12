@@ -1,0 +1,93 @@
+module.exports = {
+  SELECT_FATCA_DECLARATION_TABLE:
+    'SELECT * FROM FATCA_DECLARATION_TABLE WHERE CUST_ID = :CifId',
+
+  UPDATE_FATCA_DECLARATION_TABLE: `UPDATE FATCA_DECLARATION_TABLE 
+  SET 
+  IS_MODIFY_REQUEST = :IS_MODIFY_REQUEST,
+  PREVIOUS_ANSWERS = :PREVIOUS_ANSWERS,
+  NEW_ANSWERS = :NEW_ANSWERS,
+  PREVIOUS_DATA = :PREVIOUS_DATA,
+  FREE_CODE_18 = :FREE_CODE_18,
+  FREE_CODE_21 = :FREE_CODE_21,
+  FREE_CODE_61 = :FREE_CODE_61,
+  STATUS = :STATUS,
+  CHANNEL_ID = :CHANNEL_ID,
+  REQUEST = :REQUEST,
+  RESPONSE = :RESPONSE,
+  R_MOD_TIME = :R_MOD_TIME,
+  R_MOD_ID = :R_MOD_ID
+  WHERE CUST_ID = :CUST_ID`,
+
+  INSERT_FATCA_DECLARATION_TABLE: `INSERT INTO "FATCA_DECLARATION_TABLE"
+  (
+    CUST_ID,
+    IS_MODIFY_REQUEST,
+    PREVIOUS_ANSWERS,
+    NEW_ANSWERS,
+    PREVIOUS_DATA,
+    FREE_CODE_18,
+    FREE_CODE_21,
+    FREE_CODE_61,
+    STATUS,
+    CHANNEL_ID,
+    REQUEST,
+    RESPONSE,
+    FREE_FIELD_1,
+    FREE_FIELD_2,
+    FREE_FIELD_3,
+    R_CRE_TIME,
+    R_CRE_ID,
+    R_MOD_TIME,
+    R_MOD_ID
+  )
+  VALUES (
+    :CUST_ID,
+    :IS_MODIFY_REQUEST,
+    :PREVIOUS_ANSWERS,
+    :NEW_ANSWERS,
+    :PREVIOUS_DATA,
+    :FREE_CODE_18,
+    :FREE_CODE_21,
+    :FREE_CODE_61,
+    :STATUS,
+    :CHANNEL_ID,
+    :REQUEST,
+    :RESPONSE,
+    :FREE_FIELD_1,
+    :FREE_FIELD_2,
+    :FREE_FIELD_3,
+    :R_CRE_TIME,
+    :R_CRE_ID,
+    :R_MOD_TIME,
+    :R_MOD_ID
+  )`,
+
+  GET_MOBILENO_EMAIL_QUERY: `SELECT 
+  DISTINCT (
+          SELECT 
+            email 
+          FROM 
+            crmuser.phoneemail 
+          where 
+            preferredflag = 'Y' 
+            and rownum < 2 
+            AND orgkey = e1.orgkey 
+            AND phoneoremail = 'EMAIL'
+        ) EMAIL, 
+        (
+          SELECT 
+            phonenolocalcode 
+          FROM 
+            crmuser.phoneemail 
+          where 
+            preferredflag = 'Y' 
+            and rownum < 2 
+            AND orgkey = e1.orgkey 
+            AND phoneoremail = 'PHONE'
+        ) PHONE 
+  FROM 
+    crmuser.phoneemail e1 
+  WHERE 
+    orgkey = :CifID`,
+}
