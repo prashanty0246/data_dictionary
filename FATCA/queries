@@ -1,0 +1,16 @@
+module.exports = {
+  GET_COUNTRY_QUERY: `select REF_CODE, REF_DESC from tbaadm.rct where  ref_rec_type='03'`,
+
+  GET_MOP_QUERY: `SELECT Count(*) AS counts
+  FROM   tbaadm.gam gaM
+  WHERE  cif_id = :CifID
+         AND acct_cls_flg = 'N'
+         AND mode_of_oper_code = '1'`,
+
+  GET_CONSTITUTION_CODE_QUERY: `SELECT constitution_code 
+        FROM 
+          CRMUSER.accounts 
+        where 
+          orgkey = :CifID
+        `,
+}
