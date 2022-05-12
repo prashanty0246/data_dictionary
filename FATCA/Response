@@ -1,0 +1,69 @@
+{
+   "getFatcaDetails":{
+      "ResponseHeader":{
+         "MessageKey":{
+            "RequestUUID":"390576320",
+            "ServiceRequestId":"modifyFatcaDetails",
+            "ServiceRequestVersion":"1.0",
+            "ChannelId":"MOB"
+         },
+         "RequestMessageInfo":{
+            "BankId":"",
+            "TimeZone":"",
+            "MessageDateTime":"2021/12/24/ 15:54:15:5980"
+         },
+         "Security":{
+            "Token":{
+               "Certificate":"",
+               "MessageHashKey":"9220027505A17C7679A27E0F7123350B6E669BCE1D6E99DE0BBBC7744104FA64",
+               "MessageIndex":"",
+               "PasswordToken":{
+                  "UserId":"",
+                  "Password":""
+               }
+            }
+         },
+         "DeviceInfo":{
+            "DeviceFamily":"iPhone",
+            "DeviceFormat":"iPhone",
+            "DeviceType":"iOS",
+            "DeviceName":"PUSHKARâ€™s iPhone",
+            "DeviceIMEI":"",
+            "DeviceID":"862C8661-E55B-4365-9564-2EA1910535A0",
+            "DeviceVersion":"15.1",
+            "AppVersion":"8.0.33.20",
+            "DeviceOS":"iOS",
+            "DeviceIp":"192.168.191.160"
+         },
+         "AdditionalInfo":{
+            "SessionId":"eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJKV1RJRCI6IjAyNGEwYzYyLTkxODUtNDU5Zi05OWRjLTkzNDA5NTllNWU5MCIsIlR5cGUiOiJNT0IiLCJDSUYiOiIxMDI1MTIzMCIsIkRldmljZUlkIjoiODYyQzg2NjEtRTU1Qi00MzY1LTk1NjQtMkVBMTkxMDUzNUEwIiwiRGV2aWNlTmFtZSI6Ij8ifQ.",
+            "LanguageId":"1",
+            "JourneyId":"",
+            "SVersion":"7.8"
+         }
+      },
+      "ResponseBody":{
+         "getFatcaDetailsResponseBody":{
+            "FatcaStatus":"YES",
+            "TaxResidenceCountry":"CRS INDICIA",
+            "FreeCode61":"NASHIK^INDIA^63728228^hdhshshs^AZ",
+            "PreviousData":"YES | CRS INDICIA | NASHIK^INDIA^63728228^hdhshshs^AZ",
+            "TaxResidenceCountryDetails":{
+               "Country":"NASHIK",
+               "CityOfBirth":"INDIA",
+               "CountryOfBirth":"63728228",
+               "TinNumber":"hdhshshs",
+               "TinDescription":"AZ",
+               "CountryOfTaxResidency":"NAMIBIA",
+               "TINIssueCountry":"NA"
+            }
+         }
+      },
+      "Status":{
+         "DisplayText":"Success",
+         "ErrorCode":"000",
+         "ErrorMessage":"000",
+         "StatusCode":"0"
+      }
+   }
+}
