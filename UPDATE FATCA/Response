@@ -1,0 +1,57 @@
+{
+  "modifyFatcaDetails": {
+    "ResponseHeader": {
+      "MessageKey": {
+        "RequestUUID": "851090820",
+        "ServiceRequestId": "modifyFatcaDetails",
+        "ServiceRequestVersion": "1.0",
+        "ChannelId": "MOB"
+      },
+      "RequestMessageInfo": {
+        "BankId": "",
+        "TimeZone": "",
+        "MessageDateTime": ""
+      },
+      "Security": {
+        "Token": {
+          "Certificate": "",
+          "MessageHashKey": "8346FE72D39A2F7224F9E2B981AD011A134C0506F11D6E5F69C7627F59F75753",
+          "MessageIndex": "",
+          "PasswordToken": {
+            "UserId": "",
+            "Password": ""
+          }
+        }
+      },
+      "DeviceInfo": {
+        "DeviceFamily": "samsung",
+        "DeviceFormat": "samsung",
+        "DeviceType": "Android",
+        "DeviceName": "samsung",
+        "DeviceIMEI": "",
+        "DeviceID": "c29bb84-f62b-3ad5-9fe5-f9c822731916",
+        "DeviceVersion": "9.4.5",
+        "AppVersion": "8.0.13",
+        "DeviceOS": "Android",
+        "DeviceIp": "192.168.0.105"
+      },
+      "AdditionalInfo": {
+        "SessionId": "",
+        "LanguageId": "1",
+        "SVersion": "1.2",
+        "JourneyId": "tt"
+      }
+    },
+    "ResponseBody": {
+      "modifyFatcaDetailsResponseBody": {
+        "Message": "As per your request, FATCA has been updated successfully in our records. Please call on 02261156300 for assistance"
+      }
+    },
+    "Status": {
+      "DisplayText": "As per your request, FATCA has been updated successfully in our records. Please call on 02261156300 for assistance",
+      "ErrorCode": "110",
+      "ErrorMessage": "As per your request, FATCA has been updated successfully in our records. Please call on 02261156300 for assistance",
+      "StatusCode": "0"
+    }
+  }
+}
