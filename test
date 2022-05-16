@@ -1,0 +1,97 @@
+"RequestBody": {
+
+      "submitPreapprovedCreditCardRequestBody": {
+
+        "OTP": "123123",
+
+        "Pincode": "422012",
+
+        "OTPRequestId": "22066122111199132",
+
+        "CardType": "LTF Cookies",
+
+        "CompanyAddress": "sample",
+
+        "CifId": "10588101",
+
+        "NewAddress": "",
+
+        "FatherFullName": "Viayak Pawar",
+
+        "Time": "",
+
+        "ScheduleDate": "2021-06-19",
+
+        "CustomerAddressChange": "Y",
+
+        "CustomerSegment": "MASS",
+
+        "GoGreenMarker": "Y",
+
+        "Designation": "4134134",
+
+        "CompanyCity": "rqrqr",
+
+        "City":"Nashik",
+
+        "CardName": "Cookies",
+
+        "CustomerAddress": "STREET NO 22 LANE NO 15, MUMBAI - 099914, MH, IN",
+
+        "CompanyPincode": "413413",
+
+        "ChannelId": "G",
+
+        "CompanyName": "sanple",
+
+        "AccountNumber": "",
+
+        "Email": "pyeshi14@gmail.com",
+
+        "FDAccountNumber": "709012113673",
+
+        "LienCode": "",
+
+        "LienAmount": "",
+
+        "AppliedFrom": "SCC",
+
+        "CardLimit": "22000",
+
+        "PrincipalAmount": "",
+
+        "AutoRenewalStatus": "",
+
+        "SchemeCode": "",
+
+        "ExpiryDate": "2022-05-24"
+
+      }
+
+    },
+
+    "RequestHeader": {
+
+      "Security": {
+
+        "Token": {
+
+          "Certificate": "",
+
+          "MessageIndex": "",
+
+          "MessageHashKey": "ECD231FAF5C88085319FDC62F9AB860627054FD45A5BE33A8E2CE3071CCC1AAA",
+
+          "PasswordToken": {
+
+            "UserId": "",
+
+            "Password": ""
+
+          }
+
+        }
+
+      },
+
+      "AdditionalInfo": {
