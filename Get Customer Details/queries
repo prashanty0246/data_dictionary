@@ -1,0 +1,107 @@
+const TABLE_API_DIGIAQUI_HEADER =
+  global.gConfig.db_oracle_abacus.schema + '.api_digiaqui_header'
+
+module.exports = {
+  GET_CITY_QUERY: `select * from tbaadm.rct where ref_rec_type='01'`,
+
+  GET_STATE_QUERY: `select * from tbaadm.rct where ref_rec_type='02'`,
+
+  GET_COUNTRY_QUERY: `select * from tbaadm.rct where ref_rec_type='03'`,
+
+  GET_ACCOUNT_SCHEME_QUERY: `select SCHM_CODE from tbaadm.gam where cif_id = :cifID and SCHM_CODE IN ('SBDG1', 'SBDG2', 'WOMN2', 'WOMEN', 'SBAB1', 'SBAB2') AND acct_cls_FLG = 'N'`,
+
+  GET_PARENT_DETAILS_QUERY: `select ADH_SOF_FNAME AS FATHER_NAME
+  from ${TABLE_API_DIGIAQUI_HEADER} where adh_cif_id= :cifID`,
+
+  GET_AADHAR_NUMBER_QUERY: `select referencenumber 
+                      from crmuser.entitydocument 
+                      where doccode='UID' and orgkey= :CifID`,
+
+  GET_INPAN_QUERY: `select REFERENCENUMBER 
+                    from 
+                      CRMUSER.entitydocument 
+                    where 
+                      doccode = 'INPAN' 
+                      AND orgkey = :CifID
+`,
+
+  GET_FATHER_NAME_DIY_QUERY: `SELECT ADH_CIF_ID,ACTOPEN_PAYLOAD FROM DIYMaster WHERE ADH_CIF_ID=@cifId AND ACTOPEN_PAYLOAD != 'NA'`,
+
+  GET_NRE_FLAG_QUERY: `select CUSTOMERNREFLG from crmuser.accounts where orgkey = :CifID`,
+
+  GET_EMAIL_MOBILENO_QUERY: `SELECT 
+                              DISTINCT (
+                                      SELECT 
+                                        email 
+                                      FROM 
+                                        crmuser.phoneemail 
+                                      where 
+                                        preferredflag = 'Y' 
+                                        and rownum < 2 
+                                        AND orgkey = e1.orgkey 
+                                        AND phoneoremail = 'EMAIL'
+                                    ) EMAIL, 
+                                    (
+                                      SELECT 
+                                        phonenolocalcode 
+                                      FROM 
+                                        crmuser.phoneemail 
+                                      where 
+                                        preferredflag = 'Y' 
+                                        and rownum < 2 
+                                        AND orgkey = e1.orgkey 
+                                        AND phoneoremail = 'PHONE'
+                                    ) PHONE 
+                              FROM 
+                                crmuser.phoneemail e1 
+                              WHERE 
+                                orgkey = :CifID
+`,
+
+  GET_REST_CUST_DETAILS_QUERY: `SELECT 
+                              ACC.ORGKEY as CIF_ID,
+                              GAM.ACID AS ACID, 
+                              ACC.ACCOUNTID AS ACCOUNT_ID, 
+                              NVL(C.ACCT_STATUS, 'A') AS ACCOUNT_STATUS, 
+                              acc.uniqueid AS UNIQUEID, 
+                              acc.uniqueidtype AS UNIQUEIDTYPE, 
+                              acc.gender AS GENDER, 
+                              TO_CHAR(acc.Cust_dob, 'dd-MM-yyyy') AS DOB, 
+                              acc.Strfield16 AS PAN, 
+                              acc.PASSPORTNO AS PASSPORTNO, 
+                              acc.LICENSENO AS LICENSENO, 
+                              acc.SSN AS SSN, 
+                              ACC.ORGKEY,
+                              ACC.NAME AS FULL_NAME,
+                              ACC.CUST_FIRST_NAME,
+                              ACC.CUST_MIDDLE_NAME, 
+                              ACC.CUST_LAST_NAME, 
+                              ACC.MaidenNameOfMother AS MOTHER_NAME,
+                              ACC.NICK_NAME,
+                              ADDR.PREFERREDADDRESS,
+                              addr.addresscategory,
+                              addr.ADDRESS_LINE1 AS address_line1, 
+                              addr.ADDRESS_LINE2 AS address_line2, 
+                              addr.ADDRESS_LINE3 AS address_line3, 
+                              addr.CITY AS CUSTOMER_CITY, 
+                              addr.STATE AS CUSTOMER_STATE, 
+                              addr.country AS CUSTOMER_COUNTRY, 
+                              addr.zip AS CUSTOMER_PINCODE, 
+                              gam.sol_id AS BRANCH_NAME, 
+                              GAM.FORACID AS ACCOUNT_NO, 
+                              GAM.SCHM_CODE AS ACCOUNT_TYPE 
+                        FROM 
+                              CRMUSER.ACCOUNTS ACC, 
+                              Crmuser.address addr, 
+                              Tbaadm.gam gam, 
+                              TBAADM.AAS AAS, 
+                              TBAADM.CAM C 
+                        WHERE 
+                              Gam.ACID = C.ACID 
+                              AND GAM.ACID = AAS.ACID 
+                              AND to_char(ACC.ORGKEY) = AAS.NMA_KEY_ID 
+                              AND ACC.ORGKEY = ADDR.ORGKEY 
+                              AND addr.addresscategory in ('Mailing', 'PERMANENT')
+                              AND GAM.SCHM_TYPE = 'ODA' 
+                              AND ACC.ORGKEY = :CifID`,
+}
