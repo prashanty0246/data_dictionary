@@ -1,0 +1,170 @@
+URL: https://cloudapiuat.ratnakarbank.in/CustomerDetails/api/v1/getCustomerDetails
+
+-----------------Request---------------
+{
+   "getCustomerDetails":{
+      "RequestHeader":{
+         "MessageKey":{
+            "RequestUUID":"496952269",
+            "ServiceRequestId":"getCustomerDetails",
+            "ServiceRequestVersion":"1.0",
+            "ChannelId":"MOB"
+         },
+         "RequestMessageInfo":{
+            "BankId":"",
+            "TimeZone":"",
+            "MessageDateTime":""
+         },
+         "Security":{
+            "Token":{
+               "Certificate":"",
+               "MessageHashKey":"F5001BB332170676FD7F456E33A47021E91AFB0AF7065E133648346FBD48B07D",
+               "MessageIndex":"",
+               "PasswordToken":{
+                  "UserId":"",
+                  "Password":""
+               }
+            }
+         },
+         "DeviceInfo":{
+            "DeviceFamily":"realme",
+            "DeviceFormat":"realme",
+            "DeviceType":"Android",
+            "DeviceName":"realme",
+            "DeviceIMEI":"",
+            "DeviceID":"4ec1c5db-96b3-3e8d-a59c-43e0ec097246",
+            "DeviceVersion":"11",
+            "AppVersion":"8.0.28.10",
+            "DeviceOS":"Android",
+            "DeviceIp":"10.81.234.60"
+         },
+         "AdditionalInfo":{
+            "SessionId":"eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJKV1RJRCI6IjM3ZTRmODk5LTllYmYtNGI1ZC04MmFjLTk2ODYwZjZhOTU0ZCIsIlR5cGUiOiJNT0IiLCJDSUYiOiIxMDQxODA3IiwiRGV2aWNlSWQiOiI0ZWMxYzVkYi05NmIzLTNlOGQtYTU5Yy00M2UwZWMwOTcyNDYiLCJEZXZpY2VOYW1lIjoiPyJ9.",
+            "LanguageId":"1",
+            "JourneyId":"",
+            "SVersion":"3.3"
+         }
+      },
+      "RequestBody":{
+         "getCustomerDetailsRequestBody":{
+            "CifId":"102512605",
+            "Type": "PERSONAL_DETAILS"
+         }
+      }
+   }
+}
+
+
+
+
+
+
+----------------Response--------------------
+{
+  "getCustomerDetails": {
+    "ResponseHeader": {
+      "MessageKey": {
+        "RequestUUID": "496952269",
+        "ServiceRequestId": "getCustomerDetails",
+        "ServiceRequestVersion": "1.0",
+        "ChannelId": "MOB"
+      },
+      "RequestMessageInfo": {
+        "BankId": "",
+        "TimeZone": "",
+        "MessageDateTime": ""
+      },
+      "Security": {
+        "Token": {
+          "Certificate": "",
+          "MessageHashKey": "F5001BB332170676FD7F456E33A47021E91AFB0AF7065E133648346FBD48B07D",
+          "MessageIndex": "",
+          "PasswordToken": {
+            "UserId": "",
+            "Password": ""
+          }
+        }
+      },
+      "DeviceInfo": {
+        "DeviceFamily": "realme",
+        "DeviceFormat": "realme",
+        "DeviceType": "Android",
+        "DeviceName": "realme",
+        "DeviceIMEI": "",
+        "DeviceID": "4ec1c5db-96b3-3e8d-a59c-43e0ec097246",
+        "DeviceVersion": "11",
+        "AppVersion": "8.0.28.10",
+        "DeviceOS": "Android",
+        "DeviceIp": "10.81.234.60"
+      },
+      "AdditionalInfo": {
+        "SessionId": "eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJKV1RJRCI6IjM3ZTRmODk5LTllYmYtNGI1ZC04MmFjLTk2ODYwZjZhOTU0ZCIsIlR5cGUiOiJNT0IiLCJDSUYiOiIxMDQxODA3IiwiRGV2aWNlSWQiOiI0ZWMxYzVkYi05NmIzLTNlOGQtYTU5Yy00M2UwZWMwOTcyNDYiLCJEZXZpY2VOYW1lIjoiPyJ9.",
+        "LanguageId": "1",
+        "JourneyId": "",
+        "SVersion": "3.3"
+      }
+    },
+    "ResponseBody": {
+      "getCustomerDetailsResponseBody": {
+        "CustomerID": "102512605",
+        "FirstName": "NARENDRA",
+        "MiddleName": "DAMODARDAS",
+        "SurName": "MODI",
+        "FullName": "NARENDRA DAMODARDAS MODI",
+        "Nickname": "",
+        "FatherName": "",
+        "MotherName": "DAMODARDAS MODI",
+        "DOB": "05-07-1957",
+        "Gender": "M",
+        "MobileNo": "9999999999",
+        "TelephoneNo": "",
+        "TelephoneType": "",
+        "Email": "nmodi@yahoo.co.in",
+        "IsEmailEnabled": "Y",
+        "Pan": "FORM 61",
+        "InPAN": "",
+        "Passport": "",
+        "Aadhaar": "24XXXXXXXX66",
+        "VoterId": "",
+        "DriverLicense": "",
+        "RationCardNo": "",
+        "Address": [
+          {
+            "AddrCategory": "PERMANENT",
+            "PrefAddr": "N",
+            "Add1": "STREET NO 32",
+            "Add2": "LANE NO 22",
+            "Add3": "GJ 80",
+            "City": "MUMBAI",
+            "State": "MAHARASHTRA",
+            "Country": "INDIA",
+            "CityCode": "MUM",
+            "StateCode": "MH",
+            "CountryCode": "IN",
+            "PostalCode": "044477"
+          },
+          {
+            "AddrCategory": "MAILING",
+            "PrefAddr": "Y",
+            "Add1": "STREET NO 32",
+            "Add2": "LANE NO 22",
+            "Add3": "GJ 80",
+            "City": "MUMBAI",
+            "State": "MAHARASHTRA",
+            "Country": "INDIA",
+            "CityCode": "MUM",
+            "StateCode": "MH",
+            "CountryCode": "IN",
+            "PostalCode": "044477"
+          }
+        ]
+      }
+    },
+    "Status": {
+      "DisplayText": "Success",
+      "ErrorCode": "000",
+      "ErrorMessage": "Success",
+      "StatusCode": "0"
+    }
+  }
+}
