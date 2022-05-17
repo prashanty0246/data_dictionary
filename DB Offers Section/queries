@@ -1,0 +1,28 @@
+const CHECK_USER_DEBIT_CARD_OFFER = `SELECT Offer_ID
+                                FROM Debit_card_recommendation 
+                                WHERE customer_code=@customer_code`
+
+const GET_OFFERS_FROM_OFFER_IDS = (offerIDs, pageLimit, pageNumber) =>
+  `SELECT *
+   FROM Debit_card_offers_details 
+   WHERE Offer_ID IN (${offerIDs.map((item) => `'${item}'`)}) 
+         AND Valid_Till >= @Valid_Till AND Valid_From <= @Valid_From
+    ORDER BY CHARINDEX(CAST(offer_id AS VARCHAR), '${offerIDs.map(
+      (item) => item
+    )}')
+    OFFSET ${pageNumber - 1}*${pageLimit} ROWS
+    FETCH NEXT ${pageLimit} ROWS ONLY`
+
+const DELETE_EXPIRE_OFFERS = `DELETE FROM Debit_card_offers_details WHERE Offer_Expiry_Date < @Offer_Expiry_Date`
+
+const GET_OFFERS_COUNT = (offerIDs) =>
+  `SELECT COUNT(*) as Counts FROM Debit_card_offers_details 
+    WHERE Offer_ID IN (${offerIDs.map((item) => `'${item}'`)}) 
+    AND Valid_Till >= @Valid_Till AND Valid_From <= @Valid_From`
+
+module.exports = {
+  GET_OFFERS_COUNT,
+  CHECK_USER_DEBIT_CARD_OFFER,
+  GET_OFFERS_FROM_OFFER_IDS,
+  DELETE_EXPIRE_OFFERS,
+}
