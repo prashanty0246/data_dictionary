@@ -1,0 +1,40 @@
+SELECT  Menu.MENU_ID, TITLE, SEQUENCE
+          ,REPLACE(Menu.MENU_CODE,'NA','') AS MENU_CODE
+          ,Menu.IS_NEW, COALESCE(ICON,'') AS ICON
+          ,DESCRIPTION, IS_LIVE,Mapping.PAGE_NAME
+          ,'' AS START_DATE, '' AS END_DATE
+          ,COALESCE(FIELD1,'') AS FIELD1, COALESCE(FIELD2,'') AS FIELD2, COALESCE(FIELD3,'') AS FIELD3
+        FROM MenuMaster(nolock)  Menu
+        INNER JOIN MenuPageMapping(nolock) Mapping
+        ON Menu.MENU_ID = Mapping.MENU_ID
+        WHERE
+          Menu.IS_DELETED = 'N'
+          AND Mapping.IS_DELETED = 'N'
+          AND Mapping.${userSegmant} = 'Y'
+          AND Mapping.${AppFlag} = 'Y'
+          AND Mapping.PAGE_NAME IN ${pageNameQueryParam}
+          AND Mapping.${deviceOS} <= @APP_VERSION
+          
+          
+   SELECT SUBSCRIPTION_START_DATE, SUBSCRIPTION_END_DATE
+    FROM ${TABLE_SGBM}
+    WHERE 
+    DEL_FLG = 'N'
+    AND TO_DATE('${currentDate}', 'DD/MM/YYYY')
+    BETWEEN
+    TO_DATE(SUBSCRIPTION_START_DATE, 'DD/MM/YYYY')
+    AND
+    TO_DATE(SUBSCRIPTION_END_DATE, 'DD/MM/YYYY')
+    
+    
+    
+    SELECT PROPERTY_NAME, PROPERTY_VAL, DEL_FLG 
+    FROM ${TABLE_PRPM}
+    WHERE 
+    DEL_FLG = 'N'
+    AND 
+    (
+      PROPERTY_NAME = 'SGB_SUB_START_TIME'
+      OR
+      PROPERTY_NAME = 'SGB_SUB_END_TIME'
+    )
