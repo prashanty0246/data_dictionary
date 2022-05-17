@@ -1,0 +1,92 @@
+{
+  "000": {
+    "errorCode": "000",
+    "errorMsg": "Success",
+    "errorType": "B"
+  },
+  "001": {
+    "errorCode": "001",
+    "errorMsg": "API Call Error",
+    "errorType": "T"
+  },
+  "002": {
+    "errorCode": "002",
+    "errorMsg": "Request Timed Out",
+    "errorType": "T"
+  },
+  "003": {
+    "errorCode": "003",
+    "errorMsg": "Improper Response",
+    "errorType": "T"
+  },
+  "004": {
+    "errorCode": "004",
+    "errorMsg": "Invalid ChannelID",
+    "errorType": "B"
+  },
+  "005": {
+    "errorCode": "005",
+    "errorMsg": "Invalid ServiceRequestID",
+    "errorType": "B"
+  },
+  "006": {
+    "errorCode": "006",
+    "errorMsg": "Duplicate RequestUUID",
+    "errorType": "B"
+  },
+  "007": {
+    "errorCode": "007",
+    "errorMsg": "Database Error",
+    "errorType": "T"
+  },
+  "008": {
+    "errorCode": "008",
+    "errorMsg": "Failure Response",
+    "errorType": "B"
+  },
+  "009": {
+    "errorCode": "010",
+    "errorMsg": "No data found for inputs provided",
+    "errorType": "B"
+  },
+  "010": {
+    "errorCode": "010",
+    "errorMsg": "Invalid input provided in request..",
+    "errorType": "B"
+  },
+  "999": {
+    "errorCode": "999",
+    "errorMsg": "Something went wrong.Kindly contact System Admin.",
+    "errorType": "T"
+  },
+  "101": {
+    "errorCode": "101",
+    "errorMsg": "Card re-issue request has been raised already.",
+    "errorType": "T"
+  },
+  "102": {
+    "errorCode": "102",
+    "errorMsg": "You Don't Have any Debit Card offer",
+    "errorType": "T"
+  },
+  "103": {
+    "errorCode": "103",
+    "errorMsg": "Database service is not enable",
+    "errorType": "T"
+  },
+  "104": {
+    "errorCode": "104",
+    "errorMsg": "You have already applied for a credit card. You will not be able to apply until that request gets processed.",
+    "errorType": "T"
+  },
+  "105": {
+    "errorCode": "105",
+    "errorMsg": "Caught en error while inserting, Kindly check the details",
+    "errorType": "T"
+  },
+  "408": {
+    "errorCode": "408",
+    "errorMsg": "Request Timed Out",
+    "errorType": "T"
+  }
+}
