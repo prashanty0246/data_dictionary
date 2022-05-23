@@ -1,0 +1,246 @@
+UAT - https://apiv3uat.rblbank.com/mobank/FDBooking/api/v1/getFDBookingLimit
+PROD - https://apiv3.rblbank.com/mobank/FDBooking/api/v1/getFDBookingLimit
+
+
+----------------Request-----------------
+{
+  "getFDBookingLimit": {
+    "RequestHeader": {
+      "Security": {
+        "Token": {
+          "MessageHashKey": "",
+          "MessageIndex": "",
+          "PasswordToken": {
+            "Password": "",
+            "UserId": "DUAL"
+          },
+          "Certificate": ""
+        }
+      },
+      "AdditionalInfo": {
+        "SessionId": "",
+        "LanguageId": "1",
+        "JourneyId": null,
+        "SVersion": "7.3"
+      },
+      "DeviceInfo": {
+        "DeviceName": "",
+        "DeviceVersion": "",
+        "DeviceID": "",
+        "DeviceOS": "",
+        "AppVersion": "",
+        "DeviceFormat": "",
+        "DeviceFamily": "",
+        "DeviceType": "",
+        "DeviceIp": "",
+        "DeviceIMEI": ""
+      },
+      "RequestMessageInfo": {
+        "MessageDateTime": "2021-10-29T13:05:28.075",
+        "BankId": "01",
+        "TimeZone": "GMT+05:00"
+      },
+      "MessageKey": {
+        "ChannelId": "BWY",
+        "RequestUUID": "163549292807111111111111111",
+        "ServiceRequestId": "getFDBookingLimit",
+        "ServiceRequestVersion": "10.2"
+      }
+    },
+    "RequestBody": {
+      "getFDBookingLimitRequestBody": {
+        "CifId": "20104667",
+        "SavingsAccountNumber": "409000433670",
+        "Amount": "5000000.0"
+      }
+    }
+  }
+}
+
+
+
+
+--------------------Response-----------------
+{
+  "getFDBookingLimit": {
+    "ResponseHeader": {
+      "Security": {
+        "Token": {
+          "MessageHashKey": "",
+          "MessageIndex": "",
+          "PasswordToken": {
+            "Password": "",
+            "UserId": "DUAL"
+          },
+          "Certificate": ""
+        }
+      },
+      "AdditionalInfo": {
+        "SessionId": "",
+        "LanguageId": "1",
+        "JourneyId": null,
+        "SVersion": "7.3"
+      },
+      "DeviceInfo": {
+        "DeviceName": "",
+        "DeviceVersion": "",
+        "DeviceID": "",
+        "DeviceOS": "",
+        "AppVersion": "",
+        "DeviceFormat": "",
+        "DeviceFamily": "",
+        "DeviceType": "",
+        "DeviceIp": "",
+        "DeviceIMEI": ""
+      },
+      "RequestMessageInfo": {
+        "MessageDateTime": "2021-10-29T13:05:28.075",
+        "BankId": "01",
+        "TimeZone": "GMT+05:00"
+      },
+      "MessageKey": {
+        "ChannelId": "BWY",
+        "RequestUUID": "163549292807111111111111111",
+        "ServiceRequestId": "getFDBookingLimit",
+        "ServiceRequestVersion": "10.2"
+      }
+    },
+    "ResponseBody": {
+      "getFDBookingLimitResponseBody": {
+        "Amount": "5010000"
+      }
+    },
+    "Status": {
+      "DisplayText": "Success",
+      "ErrorCode": "000",
+      "ErrorMessage": "Success",
+      "StatusCode": "0"
+    }
+  }
+}
+
+
+
+
+-----------------Faiure Response-----------------
+{
+  "getFDBookingLimit": {
+    "ResponseHeader": {
+      "Security": {
+        "Token": {
+          "MessageHashKey": "",
+          "MessageIndex": "",
+          "PasswordToken": {
+            "Password": "",
+            "UserId": "DUAL"
+          },
+          "Certificate": ""
+        }
+      },
+      "AdditionalInfo": {
+        "SessionId": "",
+        "LanguageId": "1",
+        "JourneyId": null,
+        "SVersion": "7.3"
+      },
+      "DeviceInfo": {
+        "DeviceName": "",
+        "DeviceVersion": "",
+        "DeviceID": "",
+        "DeviceOS": "",
+        "AppVersion": "",
+        "DeviceFormat": "",
+        "DeviceFamily": "",
+        "DeviceType": "",
+        "DeviceIp": "",
+        "DeviceIMEI": ""
+      },
+      "RequestMessageInfo": {
+        "MessageDateTime": "2021-10-29T13:05:28.075",
+        "BankId": "01",
+        "TimeZone": "GMT+05:00"
+      },
+      "MessageKey": {
+        "ChannelId": "BWY",
+        "RequestUUID": "163549292807111111111111111",
+        "ServiceRequestId": "getFDBookingLimit",
+        "ServiceRequestVersion": "10.2"
+      }
+    },
+    "Status": {
+      "DisplayText": "Failure",
+      "ErrorCode": "008",
+      "ErrorMessage": "Failure",
+      "StatusCode": "1"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+--------------Curl Request------------------
+curl -X POST \
+  'https://localhost:4091/mobank/FDBooking/api/v1/getFDBookingLimit' \
+  --header 'Accept: */*' \
+  --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+  "getFDBookingLimit": {
+    "RequestHeader": {
+      "Security": {
+        "Token": {
+          "MessageHashKey": "",
+          "MessageIndex": "",
+          "PasswordToken": {
+            "Password": "",
+            "UserId": "DUAL"
+          },
+          "Certificate": ""
+        }
+      },
+      "AdditionalInfo": {
+        "SessionId": "",
+        "LanguageId": "1",
+        "JourneyId": null,
+        "SVersion": "7.3"
+      },
+      "DeviceInfo": {
+        "DeviceName": "",
+        "DeviceVersion": "",
+        "DeviceID": "",
+        "DeviceOS": "",
+        "AppVersion": "",
+        "DeviceFormat": "",
+        "DeviceFamily": "",
+        "DeviceType": "",
+        "DeviceIp": "",
+        "DeviceIMEI": ""
+      },
+      "RequestMessageInfo": {
+        "MessageDateTime": "2021-10-29T13:05:28.075",
+        "BankId": "01",
+        "TimeZone": "GMT+05:00"
+      },
+      "MessageKey": {
+        "ChannelId": "BWY",
+        "RequestUUID": "163549292807111111111111111",
+        "ServiceRequestId": "getFDBookingLimit",
+        "ServiceRequestVersion": "10.2"
+      }
+    },
+    "RequestBody": {
+      "getFDBookingLimitRequestBody": {
+        "CifId": "20104667",
+        "SavingsAccountNumber": "409000433670",
+        "Amount": "5000000.0"
+      }
+    }
+  }
+}'
