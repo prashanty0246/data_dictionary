@@ -1,0 +1,52 @@
+{
+  "000": {
+    "errorCode": "000",
+    "errorMsg": "Success",
+    "errorType": "B"
+  },
+  "001": {
+    "errorCode": "001",
+    "errorMsg": "Not able to retrieve Deposit Amount",
+    "errorType": "T"
+  },
+  "008": {
+    "errorCode": "008",
+    "errorMsg": "Due to technical issue we are unable to process your request at this time. Please try again after sometime.",
+    "errorType": "T"
+  },
+  "010": {
+    "errorCode": "010",
+    "errorMsg": "Invalid input provided in request..",
+    "errorType": "B"
+  },
+  "011": {
+    "errorCode": "011",
+    "errorMsg": "Error in sending notification",
+    "errorType": "B"
+  },
+  "106": {
+    "errorCode": "106",
+    "errorMsg": "Unable to get FdBooking Details.",
+    "errorType": "B"
+  },
+  "102": {
+    "errorCode": "102",
+    "errorMsg": "Cannot Get Status",
+    "errorType": "B"
+  },
+  "408": {
+    "errorCode": "408",
+    "errorMsg": "Request Timed Out",
+    "errorType": "T"
+  },
+  "999": {
+    "errorCode": "999",
+    "errorMsg": "Something went wrong.Kindly contact System Admin.",
+    "errorType": "T"
+  },
+  "101": {
+    "errorCode": "101",
+    "errorMsg": "You are trying to book a deposit of cumulative amount greater than the bank approved limit. For further details, please reach-out to your Relationship Manager or Branch Manager",
+    "errorType": "T"
+  }
+}
