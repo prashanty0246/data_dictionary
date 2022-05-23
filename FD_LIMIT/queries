@@ -1,0 +1,59 @@
+const QUERY_GET_DETAILS = `select sum(original_deposit_amount) as ORIGINAL_DEPOSIT_AMOUNT
+
+from tbaadm.gam,tbaadm.tam
+
+where gam.acid = tam.repayment_acid
+
+and gam.entity_cre_flg ='Y'
+
+and gam.acct_cls_flg !='Y'
+
+and tam.cls_value_date is null
+
+and tam.deposit_type='T'
+
+and tam.ren_srl_num ='0000'
+
+and tam.open_effective_date between (select db_stat_date -7 from tbaadm.gct) and (select db_stat_date from tbaadm.gct)
+
+and tam.repayment_acid = (select acid from tbaadm.gam where foracid = :SavingsAccountNumber)
+
+and (exists (select 1 from tbaadm.dtt, tbaadm.dth
+
+            where dtt.acid = tam.acid
+
+            and dtt.tran_id = dth.tran_id
+
+            and dtt.tran_date = dth.tran_date
+
+            and dtt.del_flg ='N'
+
+            and dth.del_flg ='N'
+
+            and dtt.flow_code ='PI'
+
+            and dtt.rcre_user_id ='FIVUSR'
+
+            and dth.delivery_channel_id in ('COR','MOB'))
+
+  or exists (select 1 from tbaadm.dtt, tbaadm.hth
+
+            where dtt.acid = tam.acid
+
+            and dtt.tran_id = hth.tran_id
+
+            and dtt.tran_date = hth.tran_date
+
+            and dtt.del_flg ='N'
+
+            and hth.del_flg ='N'
+
+            and dtt.flow_code ='PI'
+
+            and dtt.rcre_user_id ='FIVUSR'
+
+            and hth.delivery_channel_id in ('COR','MOB')
+
+            and hth.tran_date between (select db_stat_date -7 from tbaadm.gct) and (select db_stat_date from tbaadm.gct)))`
+
+module.exports = { QUERY_GET_DETAILS }
